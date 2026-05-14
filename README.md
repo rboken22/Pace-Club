@@ -2,7 +2,7 @@
 
 A conversion-focused landing page for **PaceUp Run Club**, a 30-day beginner running program operating across 5 Indian cities. Built as part of a product marketing exercise to demonstrate value communication, funnel structure, and persuasive design.
 
-🔗 **Live site:** `https://<your-username>.github.io/<your-repo-name>/`
+🔗 **Live site:** `https://rboken22.github.io/Pace-Club/#`
 
 ## What's Inside
 
@@ -34,7 +34,7 @@ The landing page follows a **curiosity → trust → action** flow:
 
 ## Target User
 
-Urban Indian adults (25–40) who want to start running but lack structure, confidence, or community to follow through.
+Urban Indian adults (20–40) who want to start running but lack structure, confidence, or community to follow through.
 
 ## Deploying to GitHub Pages
 
