@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaceUp Run Club — Start Running in 30 Days</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0d0c0b;
+  --paper: #f4efe6;
+  --orange: #e04e1a;
+  --orange-dark: #b83d12;
+  --sand: #e6ddc8;
+  --mist: #8a8278;
+  --offwhite: #faf7f2;
+  --green: #2d6a4f;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--ink);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 48px;
+  height: 56px;
+  border-bottom: 1px solid #1f1e1c;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 5px; color: var(--orange);
+}
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: #9a9490; text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--orange); color: #fff;
+  padding: 9px 22px; border: none; cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.nav-cta:hover { background: var(--orange-dark); }
+
+/* ── ANNOUNCEMENT STRIP ── */
+.announcement {
+  background: var(--orange); 
+  padding: 9px 24px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; margin-top: 56px;
+}
+.announcement-inner {
+  display: flex; gap: 64px;
+  animation: marquee 22s linear infinite;
+  white-space: nowrap;
+}
+.announcement span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff;
+}
+.announcement-dot { color: rgba(255,255,255,0.45); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh;
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(224,78,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-left {
+  padding: 72px 64px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 2;
+}
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--orange);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--orange);
+}
+.hero-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 9vw, 130px);
+  line-height: 0.88;
+  color: var(--paper);
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+.hero-headline em {
+  font-style: normal; color: var(--orange);
+  display: block;
+}
+.hero-sub {
+  font-size: 16px; line-height: 1.65; color: #8a8278;
+  max-width: 400px; font-weight: 300; margin-bottom: 44px;
+}
+.hero-cta-row {
+  display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.btn-primary {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--orange); color: #fff;
+  padding: 17px 36px; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+.btn-ghost {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: #7a7672;
+  background: none; border: none; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+.btn-ghost:hover { color: var(--paper); }
+
+.hero-social-proof {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid #1f1e1c;
+  display: flex; gap: 40px;
+}
+.proof-item { }
+.proof-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px; color: var(--paper); line-height: 1;
+}
+.proof-label {
+  font-size: 12px; color: #5a5652; margin-top: 4px; letter-spacing: 0.5px;
+}
+
+/* HERO RIGHT — city community map feel */
+.hero-right {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: #111009;
+}
+.hero-bg-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 280px; line-height: 1;
+  color: rgba(224,78,26,0.06);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap; pointer-events: none;
+  letter-spacing: -10px;
+}
+.city-cards {
+  display: flex; flex-direction: column; gap: 12px;
+  width: 100%; max-width: 340px; position: relative; z-index: 2;
+  padding: 60px 40px;
+}
+.city-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 18px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.2s, border-color 0.2s;
+  cursor: default;
+  animation: fadeSlide 0.6s both;
+}
+.city-card:nth-child(1) { animation-delay: 0.1s; }
+.city-card:nth-child(2) { animation-delay: 0.25s; }
+.city-card:nth-child(3) { animation-delay: 0.4s; }
+.city-card:nth-child(4) { animation-delay: 0.55s; }
+.city-card:nth-child(5) { animation-delay: 0.7s; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.city-card:hover {
+  background: rgba(224,78,26,0.08);
+  border-color: rgba(224,78,26,0.25);
+}
+.city-info { }
+.city-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700; letter-spacing: 1px;
+  color: var(--paper); text-transform: uppercase;
+}
+.city-run-detail {
+  font-size: 12px; color: #5a5652; margin-top: 3px;
+}
+.city-badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border: 1px solid rgba(224,78,26,0.35);
+  color: var(--orange);
+}
+.city-badge.live {
+  background: rgba(224,78,26,0.12);
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.hero-section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: #3a3830;
+  padding: 20px 40px 10px;
+  width: 100%;
+  position: relative; z-index: 2;
+}
+
+/* ── COMMUNITY SECTION — BHAG-INSPIRED ── */
+.community {
+  background: var(--orange);
+  padding: 72px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.community-left .section-label { color: rgba(255,255,255,0.5); }
+.community-left .section-title { color: #fff; font-size: clamp(44px, 4.5vw, 64px); }
+.community-left .section-body { color: rgba(255,255,255,0.72); }
+.whatsapp-box {
+  background: rgba(0,0,0,0.15);
+  padding: 36px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.whatsapp-preview {
+  background: rgba(0,0,0,0.2);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.wa-msg {
+  display: flex; gap: 10px; align-items: flex-end;
+}
+.wa-avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.6);
+  flex-shrink: 0; font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.5px;
+}
+.wa-bubble {
+  background: rgba(255,255,255,0.12);
+  padding: 10px 14px;
+  border-radius: 2px 10px 10px 10px;
+  font-size: 13px; color: rgba(255,255,255,0.9);
+  line-height: 1.5; max-width: 220px;
+}
+.wa-bubble.own {
+  background: rgba(255,255,255,0.22);
+  border-radius: 10px 2px 10px 10px;
+  margin-left: auto;
+}
+.wa-msg.self { flex-direction: row-reverse; }
+.wa-time { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; align-self: flex-end; }
+.whatsapp-join {
+  display: flex; align-items: center; gap: 14px;
+}
+.whatsapp-icon { font-size: 28px; }
+.whatsapp-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.4; }
+.whatsapp-text strong { color: #fff; display: block; font-size: 15px; }
+.btn-whatsapp {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  background: #25D366; color: #fff;
+  padding: 13px 24px; border: none; cursor: pointer;
+  text-decoration: none; display: inline-block;
+  margin-top: 4px; align-self: flex-start;
+  transition: background 0.2s;
+}
+.btn-whatsapp:hover { background: #1fbb59; }
+
+/* ── SECTION BASE ── */
+.section { padding: 96px 64px; }
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 0.95; letter-spacing: 0.5px; margin-bottom: 20px;
+}
+.section-body {
+  font-size: 16px; line-height: 1.7; color: #4a4642;
+  max-width: 520px; font-weight: 300;
+}
+
+/* ── EVENTS DISCOVER ── */
+.events { background: var(--offwhite); }
+.events-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 48px;
+}
+.events-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--orange); text-decoration: none;
+}
+.events-link:hover { text-decoration: underline; }
+.city-filter {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px;
+}
+.city-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid #d4c9b4; background: transparent;
+  color: var(--mist); cursor: pointer; transition: all 0.15s;
+}
+.city-btn.active, .city-btn:hover {
+  background: var(--orange); border-color: var(--orange); color: #fff;
+}
+.events-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.event-card {
+  background: var(--paper);
+  padding: 28px 24px;
+  border-top: 3px solid transparent;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: pointer; position: relative;
+}
+.event-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-3px);
+}
+.event-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+}
+.event-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; color: var(--ink); margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+.event-meta {
+  font-size: 13px; color: var(--mist); line-height: 1.5;
+  font-weight: 300;
+}
+.event-tag {
+  position: absolute; top: 16px; right: 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 8px;
+}
+.event-tag.beginner { background: #e8f4ea; color: #2d6a4f; }
+.event-tag.open { background: #fff4ec; color: var(--orange); }
+
+/* ── FOR YOU ── */
+.for-you {
+  background: var(--paper);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.for-you-left { padding: 96px 64px; }
+.for-you-list { list-style: none; margin-top: 36px; }
+.for-you-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 0; border-bottom: 1px solid #ddd5c4;
+  font-size: 15px; color: #3a3632; line-height: 1.5;
+}
+.for-you-list li:last-child { border-bottom: none; }
+.check {
+  width: 20px; height: 20px; background: var(--orange); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0; margin-top: 2px;
+}
+.for-you-right {
+  background: var(--ink);
+  padding: 96px 56px;
+  display: flex; flex-direction: column; justify-content: center; gap: 32px;
+}
+.quote-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 100px; color: var(--orange);
+  opacity: 0.22; line-height: 0.7; margin-bottom: 4px;
+}
+.testimonial-text {
+  font-size: 19px; color: var(--paper); line-height: 1.6;
+  font-weight: 300; font-style: italic; margin-bottom: 20px;
+}
+.testimonial-author {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; color: var(--orange); font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.testimonial-divider {
+  width: 100%; height: 1px; background: #1f1e1c;
+}
+
+/* ── HOW IT WORKS ── */
+.how-it-works { background: var(--ink); color: var(--paper); }
+.how-it-works .section-title { color: var(--paper); }
+.how-it-works .section-body { color: #6a6660; }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; margin-top: 56px;
+}
+.step {
+  background: #131210; padding: 36px 28px;
+  position: relative; transition: background 0.2s;
+}
+.step:hover { background: #1c1b18; }
+.step-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px; color: var(--orange); opacity: 0.2;
+  line-height: 1; margin-bottom: 16px;
+}
+.step-week {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+}
+.step-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px; color: var(--paper); margin-bottom: 12px;
+}
+.step-desc { font-size: 13px; color: #5a5652; line-height: 1.65; font-weight: 300; }
+
+/* ── GEAR STRIP (bhag-inspired) ── */
+.gear-strip {
+  background: var(--sand);
+  padding: 64px;
+  display: grid; grid-template-columns: 1fr 2fr;
+  gap: 64px; align-items: center;
+}
+.gear-text .section-body { color: #6a6452; }
+.gear-items {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gear-item {
+  background: var(--paper);
+  padding: 24px 20px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.gear-item:hover { transform: translateY(-4px); }
+.gear-emoji { font-size: 32px; margin-bottom: 12px; }
+.gear-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--ink); margin-bottom: 4px;
+}
+.gear-price { font-size: 13px; color: var(--orange); font-weight: 500; }
+.gear-note { font-size: 11px; color: var(--mist); margin-top: 2px; }
+
+/* ── SOCIAL PROOF ── */
+.social-proof { background: var(--ink); padding: 96px 64px; }
+.social-proof .section-title { color: var(--paper); }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 56px;
+}
+.review {
+  background: #131210; padding: 32px;
+  border-top: 2px solid transparent; transition: border-color 0.2s;
+}
+.review:hover { border-color: var(--orange); }
+.stars { color: #e8a020; font-size: 13px; letter-spacing: 2px; margin-bottom: 16px; }
+.review-text {
+  font-size: 15px; color: #9a9490; line-height: 1.65;
+  font-weight: 300; font-style: italic; margin-bottom: 20px;
+}
+.review-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; color: #4a4642; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.review-city {
+  font-size: 11px; color: var(--orange); margin-top: 4px;
+}
+
+/* ── PROGRAMME + PRICE ── */
+.pricing-section {
+  background: var(--paper);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.pricing-left { padding: 96px 64px; }
+.pricing-left .section-body { margin-bottom: 36px; }
+.includes-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.includes-list li {
+  font-size: 14px; color: #4a4642;
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid #e4dccb;
+}
+.includes-list li:last-child { border-bottom: none; }
+.includes-list li::before { content: '→'; color: var(--orange); font-weight: 700; }
+.pricing-right {
+  background: var(--ink);
+  padding: 96px 56px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.price-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: #4a4642; margin-bottom: 8px;
+}
+.price-was {
+  font-size: 16px; color: #3a3632; text-decoration: line-through; margin-bottom: 4px;
+}
+.price-now {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px; color: var(--paper); line-height: 1; margin-bottom: 6px;
+}
+.price-per {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; color: var(--orange); letter-spacing: 1px; margin-bottom: 40px;
+}
+.price-perks { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 10px; }
+.price-perks li {
+  font-size: 13px; color: #7a7672;
+  display: flex; align-items: center; gap: 10px;
+}
+.price-perks li::before { content: '✓'; color: var(--orange); }
+.btn-block {
+  display: block; width: 100%; text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: var(--orange); color: #fff;
+  padding: 20px; border: none; cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.btn-block:hover { background: var(--orange-dark); }
+.price-guarantee {
+  font-size: 11px; color: #4a4642; text-align: center;
+  margin-top: 16px; letter-spacing: 0.5px;
+}
+
+/* ── FAQ ── */
+.faq-section { background: var(--sand); padding: 96px 64px; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 56px; }
+.faq-item {
+  background: var(--paper); padding: 32px 28px;
+  border-top: 2px solid transparent; transition: border-color 0.2s;
+}
+.faq-item:hover { border-color: var(--orange); }
+.faq-q {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px; font-weight: 700; color: var(--ink);
+  margin-bottom: 12px; letter-spacing: 0.3px;
+}
+.faq-a { font-size: 14px; color: var(--mist); line-height: 1.7; font-weight: 300; }
+
+/* ── FINAL CTA ── */
+.final-cta {
+  background: var(--orange);
+  padding: 120px 64px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.final-cta::before {
+  content: 'BHAGO';
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 320px; line-height: 0.9;
+  color: rgba(0,0,0,0.07);
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; white-space: nowrap;
+  letter-spacing: 20px;
+}
+.final-cta .section-title { color: #fff; font-size: clamp(56px, 6vw, 88px); margin-bottom: 20px; }
+.final-cta .section-body { color: rgba(255,255,255,0.72); margin: 0 auto 48px; text-align: center; }
+.final-cta .section-label { color: rgba(255,255,255,0.5); text-align: center; }
+.cta-btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-white {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: #fff; color: var(--orange);
+  padding: 18px 44px; border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+.btn-white:hover { background: #f0ebe2; transform: translateY(-2px); }
+.btn-outline-white {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase;
+  background: transparent; color: rgba(255,255,255,0.8);
+  padding: 18px 44px;
+  border: 1px solid rgba(255,255,255,0.35);
+  cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.btn-outline-white:hover { border-color: #fff; color: #fff; }
+.cta-trust {
+  margin-top: 20px; font-size: 12px;
+  color: rgba(255,255,255,0.45); letter-spacing: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #0a0908;
+  padding: 40px 64px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px; align-items: center;
+}
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; letter-spacing: 5px; color: var(--orange);
+}
+.footer-tagline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; color: #3a3632; letter-spacing: 2px;
+  text-transform: uppercase; margin-top: 4px;
+}
+.footer-links {
+  display: flex; gap: 24px; list-style: none; justify-content: center;
+}
+.footer-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: #3a3632; text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--orange); }
+.footer-copy {
+  font-size: 11px; color: #2a2926; text-align: right;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .hero, .for-you, .community, .pricing-section { grid-template-columns: 1fr; }
+  .steps-grid, .reviews-grid { grid-template-columns: 1fr 1fr; }
+  .events-grid, .faq-grid { grid-template-columns: 1fr 1fr; }
+  .gear-strip { grid-template-columns: 1fr; }
+  .hero-left, .for-you-left, .pricing-left { padding: 56px 32px; }
+  .for-you-right, .pricing-right { padding: 56px 32px; }
+  .section { padding: 64px 32px; }
+  .events, .social-proof, .faq-section { padding: 64px 32px; }
+  .community { padding: 64px 32px; }
+  .final-cta { padding: 80px 32px; }
+  footer { grid-template-columns: 1fr; text-align: center; padding: 32px; gap: 20px; }
+  .footer-copy { text-align: center; }
+  .footer-links { justify-content: center; }
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .steps-grid, .reviews-grid, .events-grid, .gear-items, .faq-grid { grid-template-columns: 1fr; }
+  .hero-headline { font-size: 72px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">PACEUP</div>
+  <ul class="nav-links">
+    <li><a href="#discover">Discover Events</a></li>
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#join">Join</a></li>
+  </ul>
+  <a href="#join" class="nav-cta">Start Free →</a>
+</nav>
+
+<!-- ── ANNOUNCEMENT ── -->
+<div class="announcement">
+  <div class="announcement-inner">
+    <span>Weekly Group Runs</span>
+    <span class="announcement-dot">·</span>
+    <span>Delhi · Mumbai · Bengaluru · Pune · Hyderabad</span>
+    <span class="announcement-dot">·</span>
+    <span>30-Day Beginner Program</span>
+    <span class="announcement-dot">·</span>
+    <span>Free 7-Day Trial</span>
+    <span class="announcement-dot">·</span>
+    <span>WhatsApp Community</span>
+    <span class="announcement-dot">·</span>
+    <span>Weekly Group Runs</span>
+    <span class="announcement-dot">·</span>
+    <span>Delhi · Mumbai · Bengaluru · Pune · Hyderabad</span>
+    <span class="announcement-dot">·</span>
+    <span>30-Day Beginner Program</span>
+    <span class="announcement-dot">·</span>
+    <span>Free 7-Day Trial</span>
+    <span class="announcement-dot">·</span>
+    <span>WhatsApp Community</span>
+    <span class="announcement-dot">·</span>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">India's Beginner Run Club</div>
+    <h1 class="hero-headline">
+      Start<br>Running.<br>
+      <em>30 Days.</em>
+    </h1>
+    <p class="hero-sub">
+      No experience. No gym. No intimidation. A structured 30-day program + weekly group runs across 5 cities — built entirely for people starting from zero.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#join" class="btn-primary">Start Free for 7 Days →</a>
+      <button class="btn-ghost">See the programme</button>
+    </div>
+    <div class="hero-social-proof">
+      <div class="proof-item">
+        <div class="proof-num">6,200+</div>
+        <div class="proof-label">Beginners graduated</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">5</div>
+        <div class="proof-label">Cities running weekly</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">4.9★</div>
+        <div class="proof-label">Member rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-bg-text">RUN</div>
+    <div style="width:100%; position:relative; z-index:2; padding: 60px 40px;">
+      <div class="hero-section-label" style="padding: 0 0 16px 0;">🏃 Live runs near you</div>
+      <div class="city-cards">
+        <div class="city-card">
+          <div class="city-info">
+            <div class="city-name">Delhi</div>
+            <div class="city-run-detail">Lodhi Garden · Sun 6:00 AM · 42 joined</div>
+          </div>
+          <div class="city-badge live">● Live</div>
+        </div>
+        <div class="city-card">
+          <div class="city-info">
+            <div class="city-name">Mumbai</div>
+            <div class="city-run-detail">Marine Drive · Sat 6:30 AM · 67 joined</div>
+          </div>
+          <div class="city-badge live">● Live</div>
+        </div>
+        <div class="city-card">
+          <div class="city-info">
+            <div class="city-name">Bengaluru</div>
+            <div class="city-run-detail">Cubbon Park · Sun 6:00 AM · 38 joined</div>
+          </div>
+          <div class="city-badge">This Sun</div>
+        </div>
+        <div class="city-card">
+          <div class="city-info">
+            <div class="city-name">Pune</div>
+            <div class="city-run-detail">Aga Khan Palace · Sat 6:15 AM · 24 joined</div>
+          </div>
+          <div class="city-badge">This Sat</div>
+        </div>
+        <div class="city-card">
+          <div class="city-info">
+            <div class="city-name">Hyderabad</div>
+            <div class="city-run-detail">KBR Park · Sun 6:00 AM · 31 joined</div>
+          </div>
+          <div class="city-badge">This Sun</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DISCOVER EVENTS ── -->
+<section class="section events" id="discover">
+  <div class="events-header">
+    <div>
+      <div class="section-label">Discover Events</div>
+      <h2 class="section-title">Upcoming Runs<br>Near You</h2>
+    </div>
+    <a href="#" class="events-link">View All Events →</a>
+  </div>
+
+  <div class="city-filter">
+    <button class="city-btn active">All Cities</button>
+    <button class="city-btn">Delhi</button>
+    <button class="city-btn">Mumbai</button>
+    <button class="city-btn">Bengaluru</button>
+    <button class="city-btn">Pune</button>
+    <button class="city-btn">Hyderabad</button>
+  </div>
+
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-tag beginner">Beginner</div>
+      <div class="event-date">Sun, 18 May · 6:00 AM</div>
+      <div class="event-name">Lodhi Garden<br>Easy 4K</div>
+      <div class="event-meta">Delhi &nbsp;·&nbsp; Walk-run intervals &nbsp;·&nbsp; Free with membership</div>
+    </div>
+    <div class="event-card">
+      <div class="event-tag open">Open</div>
+      <div class="event-date">Sat, 17 May · 6:30 AM</div>
+      <div class="event-name">Marine Drive<br>Sunrise 5K</div>
+      <div class="event-meta">Mumbai &nbsp;·&nbsp; All paces welcome &nbsp;·&nbsp; Free with membership</div>
+    </div>
+    <div class="event-card">
+      <div class="event-tag beginner">Beginner</div>
+      <div class="event-date">Sun, 18 May · 6:00 AM</div>
+      <div class="event-name">Cubbon Park<br>First Run Club</div>
+      <div class="event-meta">Bengaluru &nbsp;·&nbsp; Perfect for Day 1s &nbsp;·&nbsp; Free with membership</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMMUNITY (WhatsApp / Bhag-inspired) ── -->
+<section class="community" id="community">
+  <div class="community-left">
+    <div class="section-label">Running · Connections · Better Self</div>
+    <h2 class="section-title">Run With People.<br>Not Alone.</h2>
+    <p class="section-body">
+      Every Sunday morning in 5 cities, PaceUp members meet, run together, and go home feeling like they belong to something real. Plus a WhatsApp group that never lets you skip.
+    </p>
+  </div>
+  <div class="whatsapp-box">
+    <div class="whatsapp-preview">
+      <div class="wa-msg">
+        <div class="wa-avatar">PR</div>
+        <div>
+          <div class="wa-bubble">Did 3.2km today without stopping!! First time ever 🔥</div>
+          <div class="wa-time">7:24 AM</div>
+        </div>
+      </div>
+      <div class="wa-msg">
+        <div class="wa-avatar">AN</div>
+        <div>
+          <div class="wa-bubble">That's massive!! I remember when you couldn't do 500m 💪</div>
+          <div class="wa-time">7:26 AM</div>
+        </div>
+      </div>
+      <div class="wa-msg self">
+        <div class="wa-avatar">ME</div>
+        <div>
+          <div class="wa-bubble own">See you Sunday at Lodhi? I want to try the 5K route</div>
+          <div class="wa-time">7:29 AM</div>
+        </div>
+      </div>
+      <div class="wa-msg">
+        <div class="wa-avatar">VK</div>
+        <div>
+          <div class="wa-bubble">I'm in! Who else? 🙋</div>
+          <div class="wa-time">7:30 AM</div>
+        </div>
+      </div>
+    </div>
+    <div class="whatsapp-join">
+      <div class="whatsapp-icon">💬</div>
+      <div class="whatsapp-text">
+        <strong>Join the PaceUp WhatsApp Community</strong>
+        Get training tips, early event access & community vibes straight to your phone
+      </div>
+    </div>
+    <a href="#" class="btn-whatsapp">Join on WhatsApp →</a>
+  </div>
+</section>
+
+<!-- ── FOR YOU ── -->
+<section class="for-you">
+  <div class="for-you-left">
+    <div class="section-label">Is this for you?</div>
+    <h2 class="section-title">You've been meaning<br>to start for months.</h2>
+    <p class="section-body">PaceUp is built for real beginners — not people who "just need to get back into it." If any of these sound familiar, you're in the right place.</p>
+    <ul class="for-you-list">
+      <li><span class="check">✓</span> You get winded walking up stairs and feel embarrassed about it</li>
+      <li><span class="check">✓</span> You've started running before and stopped after 3 days</li>
+      <li><span class="check">✓</span> You don't know how fast, how far, or how often to run</li>
+      <li><span class="check">✓</span> You want accountability — someone to actually check on you</li>
+      <li><span class="check">✓</span> You want to run with people, not just by yourself with earphones</li>
+    </ul>
+  </div>
+  <div class="for-you-right">
+    <div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">I'd been saying I wanted to start running since college. Two months with PaceUp and I ran the Airtel Delhi Half Marathon relay. I still can't believe that's me.</p>
+      <div class="testimonial-author">— Priya M., Delhi &nbsp;·&nbsp; Week 12</div>
+    </div>
+    <div class="testimonial-divider"></div>
+    <div>
+      <p class="testimonial-text">The Sunday group runs changed everything. When 30 people are waiting for you at Cubbon Park, you don't hit snooze.</p>
+      <div class="testimonial-author">— Karan S., Bengaluru &nbsp;·&nbsp; Week 8</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section how-it-works" id="programme">
+  <div class="section-label">The 30-day plan</div>
+  <h2 class="section-title">Simple. Structured.<br>It Actually Works.</h2>
+  <p class="section-body">Four weeks. Each one pushes you a little further without burning you out or making you dread tomorrow.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-week">Week 1</div>
+      <div class="step-title">Walk First</div>
+      <p class="step-desc">Interval walks with short running bursts. 15–20 min per session. Your body learns what running feels like — without the pain.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-week">Week 2</div>
+      <div class="step-title">Find A Rhythm</div>
+      <p class="step-desc">Run-walk-run. Your lungs open up. Your legs find a pace. Confidence builds faster than you think it will.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-week">Week 3</div>
+      <div class="step-title">Keep Going</div>
+      <p class="step-desc">Sustained running stretches. No more counting seconds — you just run. And it starts to actually feel good.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-week">Week 4</div>
+      <div class="step-title">Own The Run</div>
+      <p class="step-desc">Your first 5K attempt. You've done the hard part. Show up, run it, and earn the badge. It's waiting for you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── GEAR STRIP ── -->
+<section class="gear-strip">
+  <div class="gear-text">
+    <div class="section-label">Gear up</div>
+    <h2 class="section-title" style="font-size: clamp(36px, 4vw, 56px);">You Don't Need<br>Much. Just These.</h2>
+    <p class="section-body">Members get exclusive access to curated beginner gear packs. No overspending — just what actually helps.</p>
+    <a href="#" class="btn-primary" style="margin-top: 28px; display: inline-block;">Shop Member Gear →</a>
+  </div>
+  <div class="gear-items">
+    <div class="gear-item">
+      <div class="gear-emoji">👟</div>
+      <div class="gear-name">Running Trainers</div>
+      <div class="gear-price">From ₹1,499</div>
+      <div class="gear-note">Member exclusive</div>
+    </div>
+    <div class="gear-item">
+      <div class="gear-emoji">🧴</div>
+      <div class="gear-name">Hydration Pack</div>
+      <div class="gear-price">₹699</div>
+      <div class="gear-note">Summer essential</div>
+    </div>
+    <div class="gear-item">
+      <div class="gear-emoji">🩳</div>
+      <div class="gear-name">Run Shorts</div>
+      <div class="gear-price">From ₹999</div>
+      <div class="gear-note">Breathable fabric</div>
+    </div>
+    <div class="gear-item">
+      <div class="gear-emoji">⌚</div>
+      <div class="gear-name">Pace Tracker</div>
+      <div class="gear-price">₹1,299</div>
+      <div class="gear-note">App-connected</div>
+    </div>
+    <div class="gear-item">
+      <div class="gear-emoji">🎧</div>
+      <div class="gear-name">Run Earbuds</div>
+      <div class="gear-price">₹799</div>
+      <div class="gear-note">Sweat-proof</div>
+    </div>
+    <div class="gear-item">
+      <div class="gear-emoji">📦</div>
+      <div class="gear-name">Starter Bundle</div>
+      <div class="gear-price">₹2,499</div>
+      <div class="gear-note">Best value</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ── -->
+<section class="social-proof">
+  <div class="section-label" style="color: #3a3632;">Real members. Real runs.</div>
+  <h2 class="section-title">They Were Exactly<br>Where You Are.</h2>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"I've never been athletic. On Day 28 I ran 3.5km without stopping. I genuinely couldn't believe it was me."</p>
+      <div class="review-name">Rahul T.</div>
+      <div class="review-city">📍 Bengaluru · Week 4 graduate</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"The audio coach in my ear at 6 AM telling me to keep going — that's the thing that made the difference. Every. Single. Time."</p>
+      <div class="review-name">Ananya S.</div>
+      <div class="review-city">📍 Mumbai · Week 6</div>
+    </div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"My doctor told me to get moving. I thought I'd last a week. I'm on Day 47 now and I look forward to my morning run."</p>
+      <div class="review-name">Vikram D.</div>
+      <div class="review-city">📍 Pune · Week 7</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="join">
+  <div class="pricing-left">
+    <div class="section-label">Everything included</div>
+    <h2 class="section-title">One Membership.<br>Everything You Need.</h2>
+    <p class="section-body">No hidden fees. No gear requirements. Just show up and we'll handle the rest.</p>
+    <ul class="includes-list">
+      <li>30-day structured training plan with daily sessions</li>
+      <li>Daily audio coaching (in your ear, on the run)</li>
+      <li>Weekly group runs in your city</li>
+      <li>WhatsApp community + weekly check-ins</li>
+      <li>Progress tracking dashboard</li>
+      <li>Event discovery & early access registration</li>
+      <li>Rest day & recovery guidance</li>
+      <li>30-day money-back guarantee</li>
+    </ul>
+  </div>
+  <div class="pricing-right">
+    <div class="price-label">Launch Pricing</div>
+    <div class="price-was">₹1,999 / month</div>
+    <div class="price-now">₹799</div>
+    <div class="price-per">per month &nbsp;·&nbsp; Limited spots</div>
+    <ul class="price-perks">
+      <li>Free 7-day trial — no card needed</li>
+      <li>Cancel anytime before trial ends</li>
+      <li>Full refund if you complete 30 days unsatisfied</li>
+      <li>Immediate WhatsApp community access</li>
+    </ul>
+    <a href="#" class="btn-block">Start My Free 7 Days →</a>
+    <div class="price-guarantee">🔒 &nbsp; 30-day money-back guarantee &nbsp;·&nbsp; No questions asked</div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+  <div class="section-label">Before you ask</div>
+  <h2 class="section-title">The Questions<br>You're Already Thinking.</h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">I'm really unfit. Is this actually for me?</div>
+      <p class="faq-a">Yes — literally. Week 1 starts with walking. You don't run a single step until your body is ready. The program meets you exactly where you are.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">I've tried to start running before and quit. Why now?</div>
+      <p class="faq-a">Because most programs assume motivation. We build structure and community instead — the two things that actually keep people going past Day 3.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much time does it take each day?</div>
+      <p class="faq-a">15–30 minutes. Before work, during lunch, or after dinner. Most members run before 7 AM and are done in time for chai.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to buy special shoes or gear?</div>
+      <p class="faq-a">Any trainers you already own are fine for Week 1. We'll tell you exactly what to get if and when you need it — nothing premature.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are the group runs really free with membership?</div>
+      <p class="faq-a">Yes. Weekly Sunday runs in all 5 cities are included. Just show up — we handle the route, the coaching, and the post-run chai meetup.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens after 30 days?</div>
+      <p class="faq-a">Most members continue with the intermediate plan or prepare for an official race event. The community doesn't stop at Day 31.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <div class="section-label">Ready to start?</div>
+  <h2 class="section-title">Day 1 Is<br>This Sunday.</h2>
+  <p class="section-body">5 cities. Hundreds of beginners. One run at a time. Join the club that meets you where you are and runs with you from there.</p>
+  <div class="cta-btn-row">
+    <a href="#" class="btn-white">Start Free for 7 Days →</a>
+    <a href="#discover" class="btn-outline-white">See Events Near Me</a>
+  </div>
+  <div class="cta-trust">No credit card &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; 30-day money-back</div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div>
+    <div class="footer-logo">PACEUP</div>
+    <div class="footer-tagline">Running · Connections · Better Self</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#">Discover</a></li>
+    <li><a href="#">Programme</a></li>
+    <li><a href="#">Shop Gear</a></li>
+    <li><a href="#">Community</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 PaceUp Run Club<br>Built for beginners, by beginners who kept going.</div>
+</footer>
+
+<script>
+// City filter buttons
+document.querySelectorAll('.city-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
